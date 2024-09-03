@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Sight Words (Level 2)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .main-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+        }
+
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .word-card {
+            background-color: white;
+            box-shadow: 4px 4px 7px 0px rgba(113, 113, 113, 0.4),
+                -4px -4px 7px 0px rgba(200, 200, 200, 0.7),
+                inset 4px 4px 7px 0px rgba(113, 113, 113, 0.2),
+                inset -4px -4px 7px 0px rgba(200, 200, 200, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+            width: 170px;
+        }
+
+        .word-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #fff3cd;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .word-card p {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .popup-content {
+            position: fixed;
+            top: 39%;
+            left: 46%;
+            transform: translate(-50%, -50%);
+            width: 26%;
+            height: 48%;
+            background-color: white;
+            box-shadow: 4px 4px 7px 0px rgba(113, 113, 113, 0.4),
+                -4px -4px 7px 0px rgba(150, 150, 150, 0.7),
+                inset 4px 4px 7px 0px rgba(113, 113, 113, 0.2),
+                inset -4px -4px 7px 0px rgba(150, 150, 150, 0.5);
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .popup-content::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #fff3cd;
+            z-index: -1;
+        }
+
+        .popup-content p {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .word-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .word-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .word-card {
+                width: 100%;
+            }
+        }
+
+        .model img {
+            width: 80%;
+            height: auto;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-red-500 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">Sight Words</a>
+            <div>
+                <a href="#section1" class="mr-4">What are Sight Words</a>
+                <a href="#section2" class="mr-4">Types of Sight Words</a>
+                <a href="#section3" class="mr-4">Fry's Sight Words</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-10 p-5">
+        <!-- Section 1 -->
+        <section id="section1" class="mb-10">
+            <h1 class="text-4xl font-bold text-left text-red-500 mb-5">What are Sight Words?</h1>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-5 md:mb-0">
+                    <p class="text-gray-700 leading-relaxed">
+                        Sight words are common words that children recognize instantly without sounding them out phonetically. Recognizing these words by sight helps children become faster, fluent, and more confident readers. Many of these sight words are tricky to read and spell for children. The way they are pronounced is often not how they are spelt!
+                    </p>
+                    <blockquote class="mt-5 text-red-500 text-lg italic">
+                        “Words such as <span class="font-bold">it, she, me, the, there</span> and <span class="font-bold">and</span> appear so often in text that educators believe it is better for children to recognize these words instantly and by sight.”
+                    </blockquote>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <img src="{% static 'images/sight words cap.png' %}"  alt="images" class="w-full h-80 rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <div class="flex flex-col items-center justify-center">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/025/003/249/small_2x/cute-cartoon-boy-student-character-on-transparent-background-generative-ai-png.png" alt="Center Image" class="object-contain max-w-full h-auto sm:max-w-xs mb-4">
+            </div>
+            
+            <div class="content-wrapper">
+                <h1 class="text-4xl font-bold text-center text-red-500 mb-5">Sightwords</h1>
+
+                <div class="container mx-auto p-5">
+                    <div class="word-grid">
+                        {% for sight_word in sight_words %}
+                        <div class="word-card" id="word-card-{{ sight_word.id }}" onclick="playAudioAndShowPopup('{{ sight_word.id }}', '{{ sight_word.word }}')">
+                            <p>{{ sight_word.word }}</p>
+                            {% if sight_word.audio_file %}
+                            <audio id="audio-{{ sight_word.id }}" src="{{ sight_word.audio_file.url }}"></audio>
+                            {% endif %}
+                            <div class="popup-content" id="popup-{{ sight_word.id }}">
+                                <p id="popup-word-{{ sight_word.id }}"></p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <section id="section2" class="mb-10">
+            <h2 class="text-3xl font-bold text-center text-red-500 mb-5">Types of Sight Words</h2>
+            <div class="text-gray-700 leading-relaxed">
+                <p class="mb-4">
+                    Sight words fall into two categories:
+                </p>
+                <ul class="list-disc list-inside mb-4">
+                    <li><span class="font-bold">Frequently Used Words</span> — these are words that occur commonly in the English language, such as <span class="font-bold">in, can, and how</span>. If you get your child to memorize these words, it makes reading much easier and smoother because the child already recognizes most of the words and can concentrate their efforts on new words. For example, knowing just the Dolch Sight Words would enable you to read about 50% of a newspaper or 80% of a children’s book.</li>
+                    <li><span class="font-bold">Non-Phonetic Words</span> — these are words that cannot be decoded phonetically, such as <span class="font-bold">know, because, or put</span>. Teaching children to memorize these words with unnatural spellings and pronunciations teaches not only these words but also helps the reader recognize similar words.</li>
+                </ul>
+                <p class="mb-4">
+                    Over the years, there have been several lists of sight and high-frequency words that are in common use, such as Dolch, Fry, Top 150, and Core Curriculum. These lists are taught around the world. The lists themselves are very similar but here at Spike’s Sight Words, we have decided to focus and use the Fry List of words.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="section3" class="mb-10">
+            <h2 class="text-3xl font-bold text-center text-red-500 mb-5">Fry's Sight Words</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-5 md:mb-0">
+                    <img src="{% static 'images/WORDS (1).jpg' %}"  alt="images" class="w-full h-80  rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <p class="text-gray-700 leading-relaxed">
+                        The Fry Sight Words list is a more modern list of words than the Dolch list, and was extended to capture the most common 1,000 words. Dr. Edward Fry developed this expanded list in the 1950s (and updated it in 1980), based on the most common words to appear in reading materials used in Grades 3–9. Learning all 1,000 words in the Fry list would equip a child to read about 90% of the words in a typical book, newspaper, or website.
+                    </p>
+                    <p class="mt-4 text-gray-700 leading-relaxed">
+                        The Fry words are listed by the frequency with which they occur and are often broken down into groups of 100. So the first 100 Fry words are the 100 most frequently occurring words in the English language.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="popup-overlay" id="popup-overlay" onclick="hidePopup()"></div>
+
+    <!-- Footer -->
+    <footer class="bg-red-500 p-4 text-white text-center">
+        <p>&copy; 2024 Sight Words. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const words = [
+            { id: '1', word: 'five' },
+            { id: '2', word: 'found' },
+            { id: '3', word: 'pull' },
+            { id: '4', word: 'read' },
+            { id: '5', word: 'sleep' },
+            { id: '6', word: 'tell' },
+            { id: '7', word: 'upon' },
+            { id: '8', word: 'use' }
+        ];
+    
+        function playAudioAndShowPopup(id, word) {
+            const popupWord = document.getElementById('popup-word-' + id);
+            popupWord.innerText = word;
+    
+            const popup = document.getElementById('popup-' + id);
+            const audioElement = document.getElementById('audio-' + id);
+    
+            if (audioElement) {
+                audioElement.play();
+            }
+    
+            if (popup) {
+                popup.style.display = 'flex';
+            }
+    
+            const overlay = document.getElementById('popup-overlay');
+            overlay.style.display = 'block';
+    
+            hideWords(id);
+    
+            setTimeout(() => {
+                hidePopup();
+            }, 2000);
+        }
+    
+        function hideWords(clickedId) {
+            for (let i = 1; i <= words.length; i++) {
+                const card = document.getElementById('word-card-' + i);
+                if (card && ('popup-' + i) !== clickedId) {
+                    card.style.visibility = 'hidden';
+                }
+            }
+        }
+    
+        function hidePopup() {
+            const popups = document.querySelectorAll('.popup-content');
+            popups.forEach(popup => popup.style.display = 'none');
+    
+            const overlay = document.getElementById('popup-overlay');
+            overlay.style.display = 'none';
+    
+            for (let i = 1; i <= words.length; i++) {
+                const card = document.getElementById('word-card-' + i);
+                if (card) {
+                    card.style.visibility = 'visible';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

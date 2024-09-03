@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Party Invitation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <style>
+        .dropzone {
+            border: 2px dashed transparent;
+            transition: border-color 0.3s ease;
+        }
+        .dropzone.hover {
+            border-color: #9f7aea; /* Tailwind purple-500 color */
+        }
+        .dragging {
+            opacity: 0.5;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-white to-purple-200 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-purple-600 text-white p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">Birthday Party Invitation</a>
+            <div class="space-x-4">
+                <a href="#" class="hover:underline">Home</a>
+                <a href="#" class="hover:underline">About</a>
+                <a href="#" class="hover:underline">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-8 px-4">
+        <div class="max-w-7xl mx-auto p-4">
+            <section id="section1" class="mb-10">
+                <h1 class="text-4xl font-bold text-left text-red-500 mb-5">Birthday party invitation</h1>
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-5 md:mb-0">
+                        <p class="text-gray-900 leading-relaxed">
+                            Here you can find activities to practise your writing skills. You can improve your writing by understanding model texts and how they're organised.
+
+                            The learning materials in this section are written and organised by level. There are different types of model texts, with writing tips and interactive exercises that practise the writing skills you need to do well at school, get good marks in your tests and exams, and get more out of your free-time activities.
+
+                            Take our free online English test to find out which level to choose. Select your level, from beginner..
+                        </p>
+                        <blockquote class="mt-5 text-red-500 text-lg italic">
+                            <span class="font-bold">"The more activities for you, the more things you will know. The more that you learn, the more places you'll go." </span>
+                        </blockquote>
+                    </div>
+                    <div class="md:w-1/2 md:pl-10">
+                        <img src="{% static 'images/birthday.jpg' %}" alt="Birthday Party" class="w-full h-80 rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Preparations Section -->
+        <div class="w-full bg-white rounded-xl shadow-lg p-8 mb-10">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-purple-700">Preparations</h1>
+                <button id="togglePreparations" class="text-purple-700 text-2xl">&#9650;</button>
+            </div>
+            <div id="preparationsContent">
+                <p class="text-gray-600 mb-6 text-lg">Match the word to the picture.</p>
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="draggable bg-purple-500 text-white py-3 px-5 rounded-xl text-lg flex items-center justify-center" data-word="Date">Date</div>
+                    <div class="draggable bg-purple-500 text-white py-3 px-5 rounded-xl text-lg flex items-center justify-center" data-word="Street">Street</div>
+                    <div class="draggable bg-purple-500 text-white py-3 px-5 rounded-xl text-lg flex items-center justify-center" data-word="Time">Time</div>
+                    <div class="draggable bg-purple-500 text-white py-3 px-5 rounded-xl text-lg flex items-center justify-center" data-word="Telephone">Telephone</div>
+                    <div class="draggable bg-purple-500 text-white py-3 px-5 rounded-xl text-lg flex items-center justify-center" data-word="Party">Party</div>
+                    <div class="draggable bg-purple-500 text-white py-3 px-5 rounded-xl text-lg flex items-center justify-center" data-word="Birthday">Birthday</div>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/p.jpg' %}" alt="Party" class="w-32 h-32">
+                        <input type="text" data-id="Party" class="dropzone mt-3 border-b-2 border-gray-300 focus:outline-none focus:border-purple-500 text-center text-lg" readonly>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/p1.jpg' %}" alt="Birthday" class="w-32 h-32">
+                        <input type="text" data-id="Birthday" class="dropzone mt-3 border-b-2 border-gray-300 focus:outline-none focus:border-purple-500 text-center text-lg" readonly>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/p2.jpg' %}" alt="Street" class="w-32 h-32">
+                        <input type="text" data-id="Street" class="dropzone mt-3 border-b-2 border-gray-300 focus:outline-none focus:border-purple-500 text-center text-lg" readonly>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/p3.jpg' %}" alt="Time" class="w-32 h-32">
+                        <input type="text" data-id="Time" class="dropzone mt-3 border-b-2 border-gray-300 focus:outline-none focus:border-purple-500 text-center text-lg" readonly>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/p4.jpg' %}" alt="Date" class="w-32 h-32">
+                        <input type="text" data-id="Date" class="dropzone mt-3 border-b-2 border-gray-300 focus:outline-none focus:border-purple-500 text-center text-lg" readonly>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/p5.jpg' %}" alt="Telephone" class="w-32 h-32">
+                        <input type="text" data-id="Telephone" class="dropzone mt-3 border-b-2 border-gray-300 focus:outline-none focus:border-purple-500 text-center text-lg" readonly>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-8">
+                    <button id="finishBtn" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-8 rounded-full text-lg">Finish</button>
+                    <button id="retryBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-8 rounded-full text-lg">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Section -->
+        <div class="w-full bg-white rounded-xl shadow-lg p-8">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-red-500">Game</h1>
+                <button id="toggleGame" class="text-red-500 text-2xl">&#9650;</button>
+            </div>
+            <div id="gameContent" class="hidden">
+                <h2 class="text-orange-500 text-xl font-bold mb-2">Birthday party invitation</h2>
+                <p class="mb-4">Read the birthday party invitation. Put the missing words in the sentences.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">Date</div>
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">To</div>
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">From</div>
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">Street</div>
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">Time</div>
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">Telephone</div>
+                    <div class="bg-red-500 text-white py-2 px-4 rounded cursor-pointer draggable" draggable="true">Party</div>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-md mb-6">
+                    <p>Hi Maria,</p>
+                    <p>I am having a <span class="dropzone inline-block border-b-2 border-gray-400">_________</span> at my house on Saturday.</p>
+                    <p>Can you come? It will be from <span class="dropzone inline-block border-b-2 border-gray-400">_________</span> 4 p.m. to 6 p.m.</p>
+                    <p>My address is 14 King <span class="dropzone inline-block border-b-2 border-gray-400">_________</span>.</p>
+                    <p>Please call me on <span class="dropzone inline-block border-b-2 border-gray-400">_________</span> to let me know.</p>
+                    <p>Thanks!</p>
+                    <p>Jessica</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <button id="finishGameBtn" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-full text-lg">Finish</button>
+                    <button id="retryGameBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-8 rounded-full text-lg">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-purple-600 text-white py-4 mt-auto">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">&copy; 2024 Birthday Party Invitation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('togglePreparations').addEventListener('click', function () {
+            const content = document.getElementById('preparationsContent');
+            content.classList.toggle('hidden');
+            this.innerHTML = content.classList.contains('hidden') ? '&#9660;' : '&#9650;';
+        });
+
+        document.getElementById('toggleGame').addEventListener('click', function () {
+            const content = document.getElementById('gameContent');
+            content.classList.toggle('hidden');
+            this.innerHTML = content.classList.contains('hidden') ? '&#9660;' : '&#9650;';
+        });
+
+        // Drag and Drop Functionality
+        interact('.draggable').draggable({
+            listeners: {
+                start(event) {
+                    event.target.classList.add('dragging');
+                },
+                end(event) {
+                    event.target.classList.remove('dragging');
+                },
+            },
+            inertia: true,
+            autoScroll: true,
+        });
+
+        interact('.dropzone').dropzone({
+            ondragenter(event) {
+                event.target.classList.add('hover');
+            },
+            ondragleave(event) {
+                event.target.classList.remove('hover');
+            },
+            ondrop(event) {
+                const draggableElement = event.relatedTarget;
+                const dropzoneElement = event.target;
+
+                dropzoneElement.value = draggableElement.getAttribute('data-word');
+                draggableElement.remove();
+                dropzoneElement.classList.remove('hover');
+            },
+        });
+
+        document.getElementById('retryBtn').addEventListener('click', function () {
+            location.reload();
+        });
+
+        document.getElementById('finishBtn').addEventListener('click', function () {
+            alert('Congratulations! You have completed the preparations.');
+        });
+
+        document.getElementById('retryGameBtn').addEventListener('click', function () {
+            location.reload();
+        });
+
+        document.getElementById('finishGameBtn').addEventListener('click', function () {
+            alert('Congratulations! You have completed the game.');
+        });
+    </script>
+</body> 
+</html>

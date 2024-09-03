@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sights words</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .main-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+        }
+
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .word-card {
+            background-color: white;
+            box-shadow: 4px 4px 7px 0px rgba(113, 113, 113, 0.4),
+                        -4px -4px 7px 0px rgba(200, 200, 200, 0.7),
+                        inset 4px 4px 7px 0px rgba(113, 113, 113, 0.2),
+                        inset -4px -4px 7px 0px rgba(200, 200, 200, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+            width: 170px;
+        }
+
+        .word-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #fff3cd;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .word-card p {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .popup-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 150px;
+            background-color: white;
+            box-shadow: 4px 4px 7px 0px rgba(113, 113, 113, 0.4),
+                        -4px -4px 7px 0px rgba(150, 150, 150, 0.7),
+                        inset 4px 4px 7px 0px rgba(113, 113, 113, 0.2),
+                        inset -4px -4px 7px 0px rgba(150, 150, 150, 0.5);
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .popup-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #fff3cd;
+            z-index: -1;
+        }
+
+        .popup-content p {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .word-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .word-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .word-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<div class="main-content">
+    <div class="flex flex-col items-center justify-center">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/025/003/249/small_2x/cute-cartoon-boy-student-character-on-transparent-background-generative-ai-png.png" alt="Center Image" class="object-contain max-w-full h-auto sm:max-w-xs mb-4">
+    </div>
+
+    <div class="content-wrapper">
+        <h1 class="text-3xl font-bold text-center mb-5">Sight words</h1>
+        <div class="container mx-auto p-5">
+            <div class="word-grid">
+                {% for sight_word in sight_words %}
+                <div class="word-card" id="word-card-{{ sight_word.id }}" onclick="playAudioAndShowPopup('{{ sight_word.id }}', '{{ sight_word.word }}')">
+                    <p>{{ sight_word.word }}</p>
+                    {% if sight_word.audio_file %}
+                    <audio id="audio-{{ sight_word.id }}" src="{{ sight_word.audio_file.url }}"></audio>
+                    {% endif %}
+                    <div class="popup-content" id="popup-{{ sight_word.id }}">
+                        <p id="popup-word-{{ sight_word.id }}"></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-overlay" id="popup-overlay" onclick="hidePopup()"></div>
+
+<script>
+    const words = [
+        { id: '1', word: 'five' },
+        { id: '2', word: 'found' },
+        { id: '3', word: 'pull' },
+        { id: '4', word: 'read' },
+        { id: '5', word: 'sleep' },
+        { id: '6', word: 'tell' },
+        { id: '7', word: 'upon' },
+        { id: '8', word: 'use' }
+    ];
+
+    function playAudioAndShowPopup(id, word) {
+        const popupWord = document.getElementById('popup-word-' + id);
+        popupWord.innerText = word;
+
+        const popup = document.getElementById('popup-' + id);
+        const audioElement = document.getElementById('audio-' + id);
+
+        if (audioElement) {
+            audioElement.play();
+        }
+
+        if (popup) {
+            popup.style.display = 'flex';
+        }
+
+        const overlay = document.getElementById('popup-overlay');
+        overlay.style.display = 'block';
+
+        hideWords(id);
+
+        setTimeout(() => {
+            hidePopup();
+        }, 2000);
+    }
+
+    function hideWords(clickedId) {
+        for (let i = 1; i <= words.length; i++) {
+            const card = document.getElementById('word-card-' + i);
+            if (card && 'popup-' + i !== clickedId) {
+                card.style.visibility = 'hidden';
+            }
+        }
+    }
+
+    function hidePopup() {
+        const popups = document.querySelectorAll('.popup-content');
+        popups.forEach(popup => popup.style.display = 'none');
+
+        const overlay = document.getElementById('popup-overlay');
+        overlay.style.display = 'none';
+
+        for (let i = 1; i <= words.length; i++) {
+            const card = document.getElementById('word-card-' + i);
+            if (card) {
+                card.style.visibility = 'visible';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

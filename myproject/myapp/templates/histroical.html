@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Perspectives on Reading Instruction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for header and main content */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(248, 248, 248, 0.95); /* Slightly transparent background */
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 70px; /* Adjust the size as needed */
+            height: auto;
+            margin-right: 10px; /* Space between logo and text */
+            border-radius: 40px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #27c5e1;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Ensure items are centered vertically */
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #34cdd8;
+            border-radius: 4px;
+        }
+
+        /* Dropdown styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #34cdd8;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover>a {
+            background-color: #34cdd8;
+            border-radius: 4px;
+        }
+
+        /* Auth buttons styles */
+        .auth-buttons {
+            display: flex;
+            align-items: center; /* Ensure items are centered vertically */
+            margin-right: 20px; /* Adjust as needed */
+        }
+
+        .auth-buttons a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #007BFF;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-buttons .login {
+            background-color: #4CAF50;
+        }
+
+        .auth-buttons .get-app {
+            background-color: #007BFF;
+        }
+
+        .auth-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 10px; /* Space between cards */
+            margin-top: 80px;
+            margin-right: 40px;
+            margin-left: 70px;
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0 0;
+            background-color: #34cdd8;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .card-body ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .card-body li {
+            margin-bottom: 10px;
+        }
+
+        .card-body a {
+            color: #800020;
+            text-decoration: none;
+        }
+
+        .card-body a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1400px; /* Adjust as needed */
+            margin: 0 auto;
+            padding: 20px; /* Add padding inside the container */
+            margin-top: 90px; /* Increased margin-top to clear the fixed header */
+            margin-left: 35px;
+            margin-bottom: 40px;
+        }
+
+        .container h2 {
+            color: #34cdd8;
+        }
+
+        .grid-item {
+            background-color: #fff; /* White background */
+            padding: 20px;
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            transition: transform 0.3s ease; /* Smooth transform effect */
+            margin-bottom: 20px; /* Space between grid items */
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px); /* Lift item on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        }
+
+        .grid-item h3 {
+            color: #34cdd8; /* Bootstrap primary color */
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .grid-item p {
+            margin-bottom: 20px;
+        }
+
+        .learn-more-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #50c7d2; /* Bootstrap primary color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #34cdd8; /* Darker shade on hover */
+        }
+
+        /* Media query for mobile view */
+        @media (max-width: 576px) {
+            .grid-item {
+                padding: 15px;
+            }
+
+            .grid-item h3 {
+                font-size: 18px;
+            }
+
+            .grid-item p {
+                font-size: 14px;
+            }
+
+            .learn-more-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/Premium Photo _ Stack of old vintage books hand drawn color watercolor illustration library and learning.jpeg" alt="Speechify Logo" class="logo-image">
+            <div class="logo">Speechify</div>
+        </div>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#">The Science of Reading </a>
+                    <div class="dropdown-content">
+                        <a href="important.html">Definition and Importance</a>
+                        <a href="histroical.html">Historical Perspectives on Reading Instruction</a>
+                        <a href="#">Key Research Findings</a>
+                        <a href="#">Impact on Educational Practices</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Spelling and Reading</a>
+                    <div class="dropdown-content">
+                        <a href="#">Phonemic Awareness</a>
+                        <a href="#">Sight Words</a>
+                        <a href="#">Vocabulary</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Comprehension</a>
+                    <div class="dropdown-content">
+                        <a href="#">Stories</a>
+                        <a href="#">Poem</a>
+                        <a href="#">Magazines</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Games</a>
+                    <div class="dropdown-content">
+                        <a href="#">Sounds</a>
+                        <a href="#">Speak</a>
+                        <a href="#">Spell</a>
+                        <a href="#">Tricky Words</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="login">Login</a>
+            <a href="#" class="get-app">Get the app</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mt-4 mb-4">Historical Perspectives on Reading Instruction</h2>
+                <div class="grid-item">
+                    <h3>The "Reading Wars"</h3>
+                    <p><strong>Phonics vs. Whole Language:</strong> A debate in the late 20th century about whether phonics (systematic instruction of letter-sound relationships) or whole language (emphasizing meaning and literature) was more effective.</p>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Balanced Literacy</h3>
+                    <p>Emerged as a compromise, integrating phonics and whole language principles.</p>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Evolution to Current Practices</h3>
+                    <p>The shift towards evidence-based practices driven by scientific research findings.</p>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+
+                <!-- New point added here -->
+                <div class="grid-item">
+                    <h3>Early Methods</h3>
+                    <p><strong>Whole Word Approach:</strong> Emphasized recognizing whole words by sight. Popular in the early 20th century.</p>
+                    <p><strong>Phonics Approach:</strong> Focused on the relationship between letters and sounds (phonemes). Dominated reading instruction in the mid-20th century.</p>
+                    <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+            </div>
+            <!-- Main content column ends -->
+
+            <!-- Sidebar column starts -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header text-dark">
+                        Historical Perspectives on Reading Instruction
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#">The "Reading Wars"</a></li>
+                            <li><a href="#">Balanced Literacy</a></li>
+                            <li><a href="#">Evolution to Current Practices</a></li>
+                            <li><a href="#">Early Methods</a></li> <!-- New point added in the sidebar -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header text-dark">
+                        Help and Support
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Support for parents</a></li>
+                            <li><a href="#">Getting started for kids</a></li>
+                            <li><a href="#">House rules for kids</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header text-dark">
+                        Courses
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Find an English course for adults</a></li>
+                            <li><a href="#">Find an English course for your child</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar column ends -->
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Reading Practice. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

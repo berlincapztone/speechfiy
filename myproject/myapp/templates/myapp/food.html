@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Topics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in-left {
+            animation: fadeInLeft 0.8s ease-in-out;
+        }
+
+        .speaker-icon:hover {
+            color: purple; /* Change color on hover */
+        }
+
+        .vocab-card {
+            border-color: purple;
+            
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+            <h2 class="text-2xl font-bold">Speechify</h2>
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-green-600"></a>
+                <div>
+                    <a href="#section1" class="text-gray-600 hover:text-green-600 mx-4">Home</a>
+                    <a href="#section2" class="text-gray-600 hover:text-green-600 mx-4">FOODS</a>
+                    <a href="#section3" class="text-gray-600 hover:text-green-600 mx-4"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-8 px-4">
+        
+        <div class="max-w-7xl mx-auto p-4">
+
+            <section id="section1" class="mb-10">
+                <h1 class="text-4xl font-bold text-left text-red-500 mb-5">Vocabulary Foods words</h1>
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-5 md:mb-0">
+                        <p class="text-gray-900 leading-relaxed">
+                            Food & drink is one of the fundamental vocabulary topics at the Speechify level. Belows are 25 vocabulary words related to things we eat and drink every day. Let’s explore and practice with games compiled on azVocab which can help you prepare thoroughly for the Speechify English proficiency assessment.
+                        </p>
+                        <blockquote class="mt-5 text-red-500 text-lg italic">
+                            <span class="font-bold">"The more that you read, the more things you will know. The more that you learn, the more places you'll go." </span>
+                        </blockquote>
+                    </div>
+                    <div class="md:w-1/2 md:pl-10">
+                        <img src="{% static 'images/food.avif' %}" alt="Vocabulary" class="w-full h-80 rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </section>
+            <section id="section2">
+                <h2 class="text-2xl font-bold py-10 text-center text-purple-600">FOODS WORDS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {% for word in words %}
+                    <div class="bg-white p-10 rounded-lg shadow-md flex items-center h-auto w-auto fade-in-left">
+                        <img class="w-40 h-40 rounded-lg object-cover mr-4" src="{{ word.image.url }}" alt="{{ word.word }}">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center">
+                                <h2 class="text-4xl font-bold">{{ word.word }}</h2>
+                            </div>
+                            <p class="italic text-gray-600 text-xl mt-2">
+                                {{ word.pronunciation }}
+                                {% if word.audio_pronunciation %}
+                                    <span class="speaker-icon cursor-pointer text-xl" onclick="playAudio('{{ word.audio_pronunciation.url }}')">&#128264;</span>
+                                {% else %}
+                                    <span class="text-gray-400">No pronunciation audio available</span>
+                                {% endif %}
+                            </p>
+                            <p class="text-gray-600 text-left">{{ word.example_sentence }}</p>
+                            <div class="mt-4 flex space-x-4">
+                                {% if word.audio_word %}
+                                    <button class="bg-purple-500 text-white px-4 py-2 rounded-full" onclick="playAudio('{{ word.audio_word.url }}')">Voice</button>
+                                {% else %}
+                                    <button class="bg-purple-200 text-gray-400 px-4 py-2 rounded-full" disabled>Voice</button>
+                                {% endif %}
+                                {% if word.audio_pronunciation %}
+                                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg" onclick="playAudio('{{ word.audio_pronunciation.url }}')">Pronunciation</button>
+                                {% else %}
+                                    <button class="bg-gray-200 text-gray-400 px-4 py-2 rounded-lg" disabled>Pronunciation</button>
+                                {% endif %}
+                                {% if word.audio_example %}
+                                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg" onclick="playAudio('{{ word.audio_example.url }}')">Example</button>
+                                {% else %}
+                                    <button class="bg-gray-200 text-gray-400 px-4 py-2 rounded-lg" disabled>Example</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+                
+
+
+            <main class="container mx-auto mt-10 p-5">
+                <section id="section3" class="mb-10">
+                    <h2 class="text-3xl font-bold text-center text-red-500 mb-5">vocabulary of Foods words</h2>
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-5 md:mb-0">
+                            <img src="{% static 'images/456.avif' %}"  alt="images" class="w-full h-80  rounded-lg shadow-lg">
+                        </div>
+                        <div class="md:w-1/2 md:pl-10">
+                            <p class="text-gray-700 leading-relaxed">
+                                Food is any substance consumed by an organism for nutritional support. Food is usually of plant, animal, or fungal origin and contains essential nutrients such as carbohydrates, fats, proteins, vitamins, or minerals. The substance is ingested by an organism and assimilated by the organism's cells to provide energy, maintain life, or stimulate growth.
+                            </p>
+                            <p class="mt-4 text-gray-700 leading-relaxed">
+                                Some Food vocabulary words are technical and hard to understand.
+                
+                                This food glossary contains an alphabetical list of Food terms explained in concise detail
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                </main>
+               
+             
+                    
+                    <!-- Footer -->
+                    <footer class="bg-white shadow-md mt-8">
+                        <div class="max-w-7xl mx-auto px-4 py-4">
+                            <div class="flex justify-between items-center">
+                                <p class="text-gray-600">© 2024 Speechify. All rights reserved.</p>
+                                <div>
+                                    <a href="#" class="text-gray-600 hover:text-green-600 mx-2">Privacy Policy</a>
+                                    <a href="#" class="text-gray-600 hover:text-green-600 mx-2">Terms of Service</a>
+                                    <a href="#" class="text-gray-600 hover:text-green-600 mx-2">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>   
+
+                    <script>
+                        function playAudio(url) {
+                            if (url) {
+                                new Audio(url).play();
+                            }
+                        }
+                    </script>
+                </body>
+                </html>
+                  

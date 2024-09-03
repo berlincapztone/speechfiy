@@ -1,0 +1,483 @@
+{%load static%}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonemic Awareness</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color:#77b4db;
+            color: white;
+        }
+
+        nav {
+            background-color:#34cdd8;
+           
+            margin-left: 800px;
+        }
+      
+        
+
+        nav .nav-link {
+            color: #d9534f;
+            font-weight: bold;
+            
+        }
+
+        nav .nav-link:hover {
+            color: #a94442;
+        }
+
+        .container ul {
+            padding-left: 0;
+        }
+
+        .container ul li {
+            list-style-type: none;
+        }
+
+        .container ul li a {
+            color: #d9534f;
+            text-decoration: none;
+        }
+
+        .container ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-top: 30px;
+        }
+
+        h3 {
+            color:#34cdd8;
+        }
+
+        h4 {
+            color: #34cdd8;
+        }
+        
+
+        p.font-italic {
+            font-style: italic;
+        }
+
+        .row .col-md-3 {
+            margin-bottom: 20px;
+        }
+
+        .row .col-md-3 img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .phoneme-section {
+            margin-bottom: 40px;
+        }
+
+        .phoneme-section:last-child {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header class=" text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3">Phonemic Awareness</h1>
+                <div>
+                    <a href="#" class="text-white mr-3"></a>
+                    <a href="#" class="text-white mr-3"></a>
+                    <a href="#" class="text-white"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white py-2">
+        <div class="container">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Consonant Phonemes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Vowel Phonemes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shorest vowel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">long vowel</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h2 class="mb-4"> Phonemic Contents</h2>
+        <ul class="list-unstyled">
+            <li><a href="#phonological-awareness">What is phonological awareness?</a></li>
+            <li><a href="#phonemic-awareness">What is phonemic awareness?</a></li>
+            <li><a href="#teach-phonemic-awareness">How to teach phonemic awareness</a></li>
+        </ul>
+
+        <section id="phonological-awareness" class="my-5">
+            <h3>What is phonological awareness?</h3>
+            <p>Phonological awareness is the ability to recognize and manipulate words and sentences. In short, even before children can begin sounding out words, they must understand the idea of how words work. The earliest reading skills a child learns fall into this category, and come well before actual reading begins. Some examples of phonological awareness include recognizing and identifying rhyming words, recognizing alliteration (words that all begin with the same letter), understanding that sentences are made of unique words, and recognizing that words can be broken into syllables. Once children have a strong sense of phonological awareness, they can then move on to developing phonemic awareness.</p>
+        </section>
+
+        <section id="phonemic-awareness" class="my-5">
+            <h3>What is phonemic awareness?</h3>
+            <p>Phonemic awareness is the ability to identify letters sounds blend them together to form words. It is important to understand that phonemic awareness is not about reading words, but about understanding the sounds made by letters. This is often an oral practice, rather than a written one. The term phonemic awareness gets its name from the word "phoneme." A phoneme is the smallest unit of sound in speech. In the English language, there are 44 phonemes, or individual sounds.</p>
+            <h3>What are consonant phonemes?</h3>
+            <p>In the English language, there are 18 consonant phonemes. It is important when learning these to recognize the difference between phonemes—the sounds created—and graphemes—the letters that represent the sound. It is also essential to understand that some phonemes can be represented by more than one grapheme. For example:</p>
+            <ul>
+                <li>/f/ may be represented by either f or ph</li>
+                <li>/k/ may be represented by either c or k</li>
+                <li>/j/ may be represented by g, j, or dge</li>
+                <li>/s/ may be represented by c or s</li>
+            </ul>
+            <p class="font-italic">Pro Tip: The consonants c, q, and x do not have their own unique phonemes. C sounds use either the /k/ or /s/ phonemes. Q sounds would use the phonemes /k//w/, as in walkway, while X sounds appear in words ending in /k//s/, such as ducks.</p>
+        </section>
+
+        <section id="consonant-phonemes" class="my-5">
+            <h3>Consonant Phonemes</h3>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/school-bag.png' %}">
+                        <p>/b/<br>bag</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/dog.jpg' %}" >
+                        <p>/d/<br>dog</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/fish.png' %}" >
+                        <p>/f/<br>fish</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/goat.jpeg' %}" >
+                        <p>/g/<br>goat</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/hen.jpeg' %}" >
+                        <p>/h/<br>hen</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/girfee.png' %}" >
+                        <p>/j/<br> giraffe</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/cat.jpeg' %}" >
+                        <p>/k/<br>cat</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/mug.png' %}" >
+                        <p>/m/<br>mug</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/nest.jpeg' %}" >
+                        <p>/n/<br>nest</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/pig.png' %}" >
+                        <p>/p/<br>pig</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/rat.png' %}" >
+                        <p>/r/<br> rat</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/sun.jpeg' %}" >
+                        <p>/s/<br>sun</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/tap.png' %}" >
+                        <p>/t/<br>tap</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/van.jpeg' %}" >
+                        <p>/v/<br>van</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/woogen.jpeg' %}" >
+                        <p>/w/<br>wagon</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/nool.png' %}" >
+                        <p>/y/<br>yarn</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/zebra.png' %}" >
+                        <p>/z/<br>zebra</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="vowel-phonemes" class="my-5">
+            <h3>Vowel Phonemes</h3>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                         <img src="{% static 'images/apple.png' %}"  alt="images">
+                        <p>/æ/<br></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                       <img src="{% static 'images/eat.jpeg' %}"  alt="images">
+                        <p>/i/<br>eat</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/ice.jpeg' %}" >
+                        <p>/aɪ/<br>ice,</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/orange.jpeg' %}" >
+                        <p>/ɒ/<br>orange</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/umberalla.png' %}" >
+                        <p>/ʌ/<br>umbrella</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/ear.jpeg' %}" >
+                        <p>/ɪə/<br>ear</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/air.avif' %}" >
+                        <p>/eə/<br>air</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/boy.jpeg' %}" >
+                        <p>/ɔɪ/<br>boy</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/cow.jpg' %}" >
+                        <p>/aʊ/<br>cow</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/no.jpg' %}" >
+                        <p>/əʊ/<br>no</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/moon].jpeg' %}" >
+                        <p>/uː/<br> moon</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/book.png' %}" >
+                        <p>/ʊ/<br>book</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id ="short " class="=my-5">
+          <h3> What are short vowel sound phonemes?</h3>
+          <p>In the English language, there are 5 short vowel sound phonemes. While early readers begin by identifying the most common short vowel sound graphemes—a, e, i, o, u—there are several ways represent these phonemes. More complicated spelling patterns are taught as children progress in their phonics instruction.
+
+            Below is a graph showing the 5 short vowel sound phonemes.</p>
+        </section>
+        
+        <section id="Shorest vowel" class="my-5">
+            <h3>Shorest vowel</h3>
+            <div class="row">,  
+                <div class="col-md-3 col-6 mb-5">
+                    <div class="text-center">
+                        <img src="{% static 'images/apple.png' %}" >
+                        <p>/a/<br>apple</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/egg.jpeg' %}" >
+                        <p>/e/<br>egg</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/igloo.jpeg' %}" >
+                        <p>/i/<br>igloo</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/frog.jpeg' %}" >
+                        <p>/o/<br>frog</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/umberalla.png' %}" >
+                        <p>/u/<br> Umbrella</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id ="long vowels" class="=my-5">
+            <h3>What are long vowel sound phonemes? </h3>
+            <p>In the English language, there are 5 long vowel sound phonemes. Children often learn these after mastering short vowel sounds and digraph phonemes. As with short vowel sounds, long vowel sound phonemes can be represented by a variety of graphemes. More complicated spelling patterns are taught as children progress in their phonics instruction.
+
+            </p>
+          </section>
+
+          <section id="long" class="my-5">
+            <h3>long vowel</h3>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-5">
+                    <div class="text-center">
+                        <img src="{% static 'images/late.png' %}" >
+                        <p>/a/<br>late</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/key.png' %}" >
+                        <p>/e/<br>key</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/ice.jpeg' %}" >
+                        <p>/i/<br>ice</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/boat.png' %}" >
+                        <p>/o/<br>boat</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/unicyle.png' %}" >
+                        <p>/u/<br> Unicycle</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="teach-phonemic-awareness" class="my-5">
+            <h3>How to Teach Phonemic Awareness</h3>
+            <p>Phonemic awareness is a vital early reading skill that can be developed through a variety of activities and strategies. Here are some methods to teach phonemic awareness:</p>
+            <h4>1. Sound Matching</h4>
+            <p>Ask children to identify words that have the same initial sound. For example, "Which word starts with the same sound as 'cat': 'car' or 'dog'?"</p>
+            <h4>2. Sound Isolation</h4>
+            <p>Have children identify the first, middle, or last sound in a word. For example, "What is the first sound in 'dog'?"</p>
+            <h4>3. Sound Blending</h4>
+            <p>Teach children to blend individual sounds to form a word. For example, "What word do these sounds make: /c/ /a/ /t/?"</p>
+            <h4>4. Sound Segmentation</h4>
+            <p>Help children break down words into individual sounds. For example, "What sounds do you hear in the word 'cat'?"</p>
+            <h4>5. Sound Addition</h4>
+            <p>Ask children to add a sound to a word. For example, "What word do you get if you add /s/ to the beginning of 'top'?"</p>
+            <h4>6. Sound Deletion</h4>
+            <p>Have children remove a sound from a word. For example, "What word is left if you take away the /c/ sound from 'cat'?"</p>
+            <h4>7. Sound Substitution</h4>
+            <p>Teach children to substitute one sound for another in a word. For example, "What word do you get if you change the /h/ in 'hat' to /b/?"</p>
+        </section>
+    </div>
+
+
+       
+    </div>
+
+    <footer class="bg-danger text-white py-3 mt-5">
+        <div class="container text-center">
+            &copy; 2024 Phonemic Awareness. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

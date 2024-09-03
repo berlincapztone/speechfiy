@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definition and Importance of the Science of Reading</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    padding-top: 90px; /* Adjusted to accommodate fixed header */
+    background-color: #f8f9fa; /* Light gray background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.section-title {
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #27c5e1; /* Bootstrap primary color */
+    margin-right: 330px;
+
+}
+
+.card {
+    background-color: #ffffff; /* White background */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+    margin-right: 30px;
+    margin-top: 80px;
+    
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Hover effect for a stronger shadow */
+}
+
+/* Card Header */
+.card-header.text-dark {
+    background-color: #27c5e1;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+}
+
+/* Card Body */
+.card-body {
+    padding: 20px;
+    height: 100%;
+}
+
+/* List Items */
+.card-body ul {
+    margin: 0;
+    padding: 0;
+}
+
+.card-body ul li {
+    margin-bottom: 10px;
+}
+
+/* Links */
+a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dropdown-item {
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    color:#27c5e1; /* Card title color */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(248, 248, 248, 0.95); /* Slightly transparent background */
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 70px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px; /* Space between logo and text */
+    border-radius: 40px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #27c5e1;
+}
+
+/* Navbar styles */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Ensure items are centered vertically */
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #34cdd8;
+    border-radius: 4px;
+}
+
+/* Dropdown styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #34cdd8;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover > a {
+    background-color: #34cdd8;
+    border-radius: 4px;
+}
+
+/* Auth buttons styles */
+.auth-buttons {
+    display: flex;
+    align-items: center; /* Ensure items are centered vertically */
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.auth-buttons a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #007BFF;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-buttons .login {
+    background-color: #4CAF50;
+}
+
+.auth-buttons .get-app {
+    background-color: #007BFF;
+}
+
+.auth-buttons a:hover {
+    background-color: #0056b3;
+}
+
+/* Learn More button */
+.btn-learn-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-learn-more:hover {
+    background-color: #0056b3;
+}
+
+/* Sidebar specific styles */
+.sidebar-card {
+    background-color: #e9ecef;
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+    margin-left: 30px;
+    margin-top: 110px;
+}
+
+.sidebar-card .card-header.text-dark {
+    background-color: #5edce4;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+}
+
+.sidebar-card .card-body {
+    padding: 20px;
+    height: 100%;
+}
+
+.sidebar-card .card-body ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-card .card-body ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-card a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar-card a:hover {
+    color: #0056b3;
+}
+
+</style>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="images/Premium Photo _ Stack of old vintage books hand drawn color watercolor illustration library and learning.jpeg" alt="Speechify Logo" class="logo-image">
+            <div class="logo">Speechify</div>
+        </div>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#">The Science of Reading </a>
+                    <div class="dropdown-content">
+                        <a href="important.html">Definition and Importance</a>
+                        <a href="historical.html">Historical Perspectives on Reading Instruction</a>
+                        <a href="#">Key Research Findings</a>
+                        <a href="#">Impact on Educational Practices</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Spelling and Reading</a>
+                    <div class="dropdown-content">
+                        <a href="#">Phonemic Awareness</a>
+                        <a href="#">Sight Words</a>
+                        <a href="#">Vocabulary</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Comprehension</a>
+                    <div class="dropdown-content">
+                        <a href="#">Stories</a>
+                        <a href="#">Poems</a>
+                        <a href="#">Magazines</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Games</a>
+                    <div class="dropdown-content">
+                        <a href="#">Sounds</a>
+                        <a href="#">Speak</a>
+                        <a href="#">Spell</a>
+                        <a href="#">Tricky Words</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="login">Login</a>
+            <a href="#" class="get-app">Get the app</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Section 1: Definition and Importance -->
+                <section>
+                    <h2 class="section-title">Definition and Importance</h2>
+
+                    <!-- Card 1: Definition -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Definition</h3>
+                            <p class="card-text">The Science of Reading is an interdisciplinary body of research
+                                that encompasses cognitive psychology, neuroscience, education, linguistics,
+                                and more. It seeks to understand the processes involved in learning to read
+                                and the best instructional practices to facilitate reading development.</p>
+                            <a href="#" class="btn btn-learn-more">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Importance -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Importance</h3>
+                            <p class="card-text">Reading is fundamental to academic success and lifelong
+                                learning. Understanding the science behind how reading works can lead to more
+                                effective teaching methods, higher literacy rates, and better educational
+                                outcomes. Literacy is also linked to economic success, personal well-being,
+                                and active citizenship.</p>
+                            <a href="#" class="btn btn-learn-more">  Learn More</a>
+                        </div>
+                    </div>
+
+                </section> <!-- End of Definition and Importance section -->
+            </div> <!-- End of col-md-8 -->
+
+            <!-- Sidebar Section -->
+            <div class="col-md-4">
+                <div class="card mb-4 sidebar-card">
+                    <div class="card-header text-dark">
+                        Reading 
+                    </div>
+                    <div class="card-body reading-card">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="reading-link">Definition and Importance</a></li>
+                            <li><a href="#" class="reading-link">Historical Perspectives on Reading Instruction</a></li>
+                            <li><a href="#" class="reading-link">Key Research Findings</a></li>
+                            <li><a href="#" class="reading-link">Impact on Educational Practices</a></li>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="card mb-4 mt-4 sidebar-card">
+                    <div class="card-header text-dark">
+                        Help and Support
+                    </div>
+                    <div class="card-body help-support">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="help-link">Support for parents</a></li>
+                            <li><a href="#" class="help-link">Getting started for kids</a></li>
+                            <li><a href="#" class="help-link">House rules for kids</a></li>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="card mb-4 mt-4 sidebar-card">
+                    <div class="card-header text-dark">
+                        Courses
+                    </div>
+                    <div class="card-body courses">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="course-link">Find an English course for adults</a></li>
+                            <li><a href="#" class="course-link">Find an English course for your child</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div> <!-- End of row -->
+
+    </div> <!-- End of container -->
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Reading Practice. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

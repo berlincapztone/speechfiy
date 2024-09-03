@@ -1,0 +1,449 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speechify</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <style>
+        /* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(248, 248, 248, 0.95); /* Slightly transparent background */
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+.logo-image {
+    width: 70px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px; /* Space between logo and text */
+    border-radius: 40px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #27c5e1;
+}
+
+
+/* Navbar styles */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Ensure items are centered vertically */
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color:#34cdd8 ;
+    border-radius: 4px;
+}
+
+/* Dropdown styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ddd;
+    
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #34cdd8;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover > a {
+    background-color:#34cdd8;
+    border-radius: 4px;
+}
+
+/* Auth buttons styles */
+.auth-buttons {
+    display: flex;
+    align-items: center; /* Ensure items are centered vertically */
+    margin-right: 50px; /* Adjust as needed */
+}
+
+.auth-buttons a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #007BFF;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-buttons .login {
+    background-color: #34cdd8;
+    border-radius: 60px;
+}
+
+.auth-buttons .get-app {
+    background-color: #34cdd8;
+}
+
+.auth-buttons a:hover {
+    background-color: #0056b3;
+}
+
+/* Main content styles */
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, #9FD7FB 70%,);
+    height: 340px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.content h2 {
+    font-size: 58px;
+    color: #4A4AFF;
+    margin-bottom: 10px;
+    align-items:justify;
+    
+}
+
+.content p {
+    font-size: 26px;
+    margin-bottom: 40px;
+
+}
+
+.illustration img {
+    width: 380px;
+    height: 270px;
+    margin-right: 120px;
+    margin-top: 90px;
+    border-radius:20px 20px 20px 20px;
+    
+}
+
+.levels-set {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.levels-set h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    width: 400px; /* Adjust as needed */
+    margin: 10px;
+    height: 270px;
+    padding: 20px;
+    background-color:#9FD7FB;
+    border-radius: 30px 10px 90px 10px; /* Curved left border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space evenly vertically */
+    align-items: center; /* Center horizontally */
+ 
+}
+
+.card h3 {
+    font-size: 28px;
+    font-style:bold;
+    margin-bottom: 10px;
+    color:black;
+}
+
+.card p {
+    font-size: 20px;
+    color: black;
+    font-style: Playwrite Slovensko;
+    text-align: center; /* Center align text */
+}
+
+.learn-more {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px 10px 10px 10px; /* Curved right border */
+    transition: background-color 0.3s;
+}
+
+.learn-more:hover {
+    background-color: #0056b3;
+}
+
+/* Footer styles */
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+    background-color: #FFF;
+    border-top: 1px solid #E0E0E0;
+}
+
+.footer-section {
+    text-align: left;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.footer-section ul li a {
+    color: #666;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-media li {
+    margin-bottom: 10px;
+}
+
+.social-media li a {
+    display: flex;
+    align-items: center;
+}
+
+.social-media li a::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: #666;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.social-media li a:hover::before {
+    background-color: #4A4AFF;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Speechify Logo" class="logo-image">
+        
+            <div class="logo">Speechify</div>
+        </div>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#">The Science of Reading</a>
+                    <div class="dropdown-content">
+                        
+                        <a href="{% url 'important' %}">Important Page</a>
+                        <a href="{% url 'important' %}">Important Page</a>
+<a href="{% url 'histroical' %}">Historical Page</a>
+<a href="{% url 'key_research' %}">Key Research Page</a>
+<a href="{% url 'impact' %}">Impact Page</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Spelling and Reading</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'phonemic_awareness' %}">Phonemic Awareness Page</a>
+                        <a href="{%url 'list_sight_words_level_2' %}">Sight Words</a>
+                        <a href="{% url 'volcubary' %}">Vocabulary</a>
+
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Comprehension</a>
+                    <div class="dropdown-content">
+                        <a href="#">Stories</a>
+                        <a href="#">Poem</a>
+                        <a href="#">Magazines</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <div class="dropdown-content">
+                        <a href="#">Sounds</a>
+                        <a href="#">Speak</a>
+                        <a href="#">Spell</a>
+                        <a href="#">Tricky words</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="{% url 'login' %}">Login Page</a>
+            <a href="#" class="get-app">Get the app</a>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            <h2>Speechify</h2>
+            <p>Is the reading non-profit organization dedicated to <br>Improving lives of people by providing <br>The education they need to thrive in this century.</p>
+        </div>
+        <div class="illustration">
+            <img src="{% static 'images/detch.png' %}"  alt="images">
+        </div>
+    </main>
+    <section class="levels-set">
+        <h1>READING PROGRAM LEVELS</h1>
+    </section>
+    <div class="card-container">
+        <div class="card">
+            <h3>Listen and watch</h3>
+            <p>Learn about grammar rules, play word games and watch fun videos</p>
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+        <div class="card">
+            <h3>Reading</h3>
+            <p>Read and write about interesting topics!</p>
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+        <div class="card">
+            <h3>Speaking</h3>
+            <p>Learn how to say and spell English words with songs and stories.</p>
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+        <div class="card">
+            <h3>Grammar and Vocabulary</h3>
+            <p>Learn about grammar rules, play word games and watch fun videos</p>
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+        <div class="card">
+            <h3>Fun and Game</h3>
+            <p>Play games and practise your speaking with our fun tongue twisters.</p>
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+        <div class="card">
+            <h3>Print and Make</h3>
+            <p>Print flashcards, worksheets and colouring pages or make some crafts</p>
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-section">
+            <h3>ABOUT US</h3>
+            <ul>
+                <li>Our Work</li>
+                <li>Board of Directors</li>
+                <li>Our Partners</li>
+                <li><a href="#">Contact Us</a></li>
+                <li>Office</li>
+                <li>Corporate Office</li>
+                <li>Branch Office</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>LEARN MORE</h3>
+            <ul>
+                <li>Research Program</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>GET INVOLVED</h3>
+            <ul>
+                <li>Donate</li>
+                <li>Join as a Parent</li>
+                <li>Join as an Educator</li>
+                <li>Get our Newsletter</li>
+                <li>Partner with us</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>FOLLOW US</h3>
+            <ul class="social-media">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Pagination</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <style>
+        .question-container {
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="bg-yellow-50 p-4 rounded-lg mb-4 question-container active">
+        <p>Dear <input type="text" class="border-b-2 border-orange-500 focus:outline-none inline-block" style="width: 80px;"> ,</p>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4 next-btn">Next</button>
+    </div>
+    <div class="bg-yellow-50 p-4 rounded-lg mb-4 question-container">
+        <p>I am having a <input type="text" class="border-b-2 border-orange-500 focus:outline-none inline-block" style="width: 120px;"> party at my house.</p>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4 next-btn">Next</button>
+    </div>
+    <div class="bg-yellow-50 p-4 rounded-lg mb-4 question-container">
+        <p>The party will be at 9 <input type="text" class="border-b-2 border-orange-500 focus:outline-none inline-block" style="width: 60px;"> on Sunday.</p>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4 next-btn">Next</button>
+    </div>
+    <div class="bg-yellow-50 p-4 rounded-lg mb-4 question-container">
+        <p>Please come to 23 <input type="text" class="border-b-2 border-orange-500 focus:outline-none inline-block" style="width: 100px;"> Road.</p>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4 next-btn">Next</button>
+    </div>
+    <div class="bg-yellow-50 p-4 rounded-lg mb-4 question-container">
+        <p>From <input type="text" class="border-b-2 border-orange-500 focus:outline-none inline-block" style="width: 80px;"> .</p>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4 next-btn">Finish</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nextButtons = document.querySelectorAll('.next-btn');
+            let currentQuestionIndex = 0;
+
+            nextButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    const currentQuestion = document.querySelectorAll('.question-container')[currentQuestionIndex];
+                    currentQuestion.classList.remove('active');
+
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < nextButtons.length) {
+                        const nextQuestion = document.querySelectorAll('.question-container')[currentQuestionIndex];
+                        nextQuestion.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

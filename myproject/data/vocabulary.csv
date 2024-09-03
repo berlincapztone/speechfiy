@@ -1,0 +1,3 @@
+word,pronunciation,example_sentence,corrected_sentence,image,audio_word,audio_pronunciation,audio_example,audio_corrected_sentence
+Hello,hɛˈloʊ,apple is the fruits.,,images/apple.png,audio/words/hello_word.mp3,audio/pronunciation/hello_pronunciation.mp3,audio/example/hello_example.mp3,
+Goodbye,ɡʊdˈbaɪ,if u say some on angry u will say goodbye.,,images/agree.jpeg,audio/words/goodbye_word.mp3,audio/pronunciation/goodbye_pronunciation.mp3,audio/example/goodbye_example.mp3,

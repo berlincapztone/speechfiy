@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+    <title>Vocabulary List</title>
+    {% load static %}
+    <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        /* Ensure the main content fits within the viewport */
+body {
+    margin: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Card Styles */
+.card-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+}
+
+.card-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.card-image {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    
+}
+
+.card-buttons button {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.bg-purple-500 {
+    background-color: #8b5cf6;
+}
+
+.bg-purple-500:hover {
+    background-color: #7c3aed;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .card-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* Footer styles */
+footer {
+    background-color: #ffffff;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+}
+
+footer a {
+    color: #4b5563;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #10b981;
+}
+
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-purple-500">Speechify</h2>
+            <div>
+                <a href="#section1" class="text-gray-600 hover:text-green-600 mx-4">Home</a>
+                <a href="#section2" class="text-gray-600 hover:text-green-600 mx-4">Foods</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto py-8 px-4">
+        <!-- Section 1 -->
+        <section id="section1" class="mb-10">
+            <h1 class="text-4xl font-bold text-left text-red-500 mb-5">Vocabulary  Words</h1>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-5 md:mb-0">
+                    <p class="text-gray-900 leading-relaxed">
+                        Food & drink is one of the fundamental vocabulary topics at the Speechify level. Below are 25 vocabulary words related to things we eat and drink every day. Let’s explore and practice with games compiled on azVocab which can help you prepare thoroughly for the Speechify English proficiency assessment.
+                    </p>
+                    <blockquote class="mt-5 text-red-500 text-lg italic">
+                        <span class="font-bold">"The more that you read, the more things you will know. The more that you learn, the more places you'll go."</span>
+                    </blockquote>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <img src="{% static 'images/food.avif' %}" alt="Vocabulary" class="w-full h-80 rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Vocabulary List -->
+        <section id="section2" class="mb-10">
+            <h1 class="text-3xl font-bold mb-6">Vocabulary List</h1>
+            <div class="card-wrapper grid gap-6 md:grid-cols-2">
+                {% for vocab in vocabulary_words %}
+                <div class="card-container">
+                    <div class="card-image-container">
+                        {% if vocab.image %}
+                        <img src="{{ vocab.image.url }}" alt="{{ vocab.word }}" class="card-image">
+                        {% else %}
+                        <img src="{% static 'images/placeholder.png' %}" alt="Placeholder" class="card-image">
+                        {% endif %}
+                    </div>
+                    <div class="card-content">
+                        <h3 class="text-lg font-semibold mb-2">{{ vocab.word }}</h3>
+                        <p class="text-gray-800 mb-2">{{ vocab.example_sentence }}</p>
+                        <p class="text-gray-800 mb-2">{{ vocab.corrected_sentence }}</p>
+                        <div class="card-buttons flex space-x-2 mt-4">
+                            {% if vocab.audio_word %}
+                            <button onclick="document.getElementById('audio_word_{{ vocab.id }}').play()" class="bg-purple-500 text-white px-4 py-2 rounded-full">Words</button>
+                            <audio id="audio_word_{{ vocab.id }}" style="display:none;">
+                                <source src="{{ vocab.audio_word.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            {% endif %}
+                            
+                            {% if vocab.audio_pronunciation %}
+                            <button onclick="document.getElementById('audio_pronunciation_{{ vocab.id }}').play()" class="bg-purple-500 text-white px-4 py-2 rounded-full">Pronunciation</button>
+                            <audio id="audio_pronunciation_{{ vocab.id }}" style="display:none;">
+                                <source src="{{ vocab.audio_pronunciation.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            {% endif %}
+                            
+                            {% if vocab.audio_example %}
+                            <button onclick="document.getElementById('audio_example_{{ vocab.id }}').play()" class="bg-purple-500 text-white px-4 py-2 rounded-full">Example</button>
+                            <audio id="audio_example_{{ vocab.id }}" style="display:none;">
+                                <source src="{{ vocab.audio_example.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            {% endif %}
+                            
+                            {% if vocab.audio_corrected_sentence %}
+                            <button onclick="document.getElementById('audio_corrected_sentence_{{ vocab.id }}').play()" class="bg-purple-500 text-white px-4 py-2 rounded-full">Corrected</button>
+                            <audio id="audio_corrected_sentence_{{ vocab.id }}" style="display:none;">
+                                <source src="{{ vocab.audio_corrected_sentence.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="section3" class="mb-10">
+            <h2 class="text-3xl font-bold text-center text-red-500 mb-5">Vocabulary Words</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-5 md:mb-0">
+                    <img src="{% static 'images/456.avif' %}" alt="images" class="w-full h-80 rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <p class="text-gray-700 leading-relaxed">
+                        Food is any substance consumed by an organism for nutritional support. Food is usually of plant, animal, or fungal origin and contains essential nutrients such as carbohydrates, fats, proteins, vitamins, or minerals. The substance is ingested by an organism and assimilated by the organism's cells to provide energy, maintain life, or stimulate growth.
+                    </p>
+                    <p class="mt-4 text-gray-700 leading-relaxed">
+                        Some Food vocabulary words are technical and hard to understand.
+                        This food glossary contains an alphabetical list of Food terms explained in concise detail.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-md mt-8">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <p class="text-gray-600">© 2024 Speechify. All rights reserved.</p>
+            <div>
+                <a href="#" class="text-gray-600 hover:text-green-600 mx-2">Privacy Policy</a>
+                <a href="#" class="text-gray-600 hover:text-green-600 mx-2">Terms of Service</a>
+                <a href="#" class="text-gray-600 hover:text-green-600 mx-2">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

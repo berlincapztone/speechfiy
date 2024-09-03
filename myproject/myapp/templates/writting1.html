@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-purple-600 p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-white text-2xl font-bold">
+                Writing Practice
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="text-white hover:text-gray-200">Home</a>
+                <a href="#" class="text-white hover:text-gray-200">About</a>
+                <a href="#" class="text-white hover:text-gray-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-purple-600 p-6 text-white text-center">
+        <h1 class="text-4xl font-bold"></h1>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center mt-8">
+        <div class="max-w-7xl w-full p-6 rounded-lg shadow-lg flex flex-col md:flex-row">
+            <!-- Main Content -->
+            <div class="md:w-3/4 w-full pr-0 md:pr-6 mb-6 md:mb-0">
+                <p class="text-lg mb-6">Do you like writing in English? In this <span class="text-purple-600 font-bold">section</span> you can practice writing different types of texts with an example to help you. Read, write, play games, print activities, and post comments!</p>
+
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- Card 1 -->
+                    <div class="bg-purple-100 p-4 rounded-lg shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/3 w-full">
+                            <img class="w-full h-full rounded-lg object-cover" src="{% static 'images/birthday.jpg' %}" alt="Birthday party invitation">
+                        </div>
+                        <div class="md:w-2/3 w-full md:pl-4 flex flex-col justify-center bg-white rounded-lg">
+                            <h2 class="text-lg font-bold text-purple-700">Birthday party invitation</h2>
+                            <p class="mt-2 text-sm">Read the birthday party invitation, then do the exercise and write a comment to practice writing in English.</p>
+                            <a href="{% url 'two' %}" class="mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 text-center">View More</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-purple-100 p-4 rounded-lg shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/3 w-full">
+                            <img class="w-full h-full rounded-lg object-cover" src="{% static 'images/food.avif' %}" alt="Feelings">
+                        </div>
+                        <div class="md:w-2/3 w-full md:pl-4 flex flex-col justify-center bg-white rounded-lg">
+                            <h2 class="text-lg font-bold text-purple-700">Feelings</h2>
+                            <p class="mt-2 text-sm">Read about feelings, then do the exercise to help you practice writing in English.</p>
+                            <p class="mt-2 text-sm text-purple-600">3 comments</p>
+                            <a href="#" class="mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 text-center">View More</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-purple-100 p-4 rounded-lg shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/3 w-full">
+                            <img class="w-full h-full rounded-lg object-cover" src="{% static 'images/food.avif' %}" alt="My best friend">
+                        </div>
+                        <div class="md:w-2/3 w-full md:pl-4 flex flex-col justify-center bg-white rounded-lg">
+                            <h2 class="text-lg font-bold text-purple-700">My best friend</h2>
+                            <p class="mt-2 text-sm">Write about your best friend, then do the exercise to help you practice writing in English.</p>
+                            <a href="#" class="mt-4 inline-block bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 text-center">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-purple-600 p-4 text-white text-center">
+        <div class="max-w-7xl mx-auto">
+            <p>&copy; 2024 Writing Practice. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
