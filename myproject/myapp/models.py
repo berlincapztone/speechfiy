@@ -42,8 +42,6 @@ class SightWord4(models.Model):
 
     def __str__(self):
         return self.word
-
-
 from django.db import models
 from gtts import gTTS
 import os
@@ -51,15 +49,16 @@ from django.conf import settings
 
 class VocabularyWord(models.Model):
     word = models.CharField(max_length=100)
-    pronunciation = models.CharField(max_length=100)
-    example_sentence = models.TextField()
+    pronunciation_text = models.CharField(max_length=100)  # Changed to CharField
+    example_sentence_text = models.TextField()  # Changed to TextField for longer sentences
+    corrected_sentence_text = models.TextField()  # Changed to TextField for longer sentences
     image = models.ImageField(upload_to='images/')
-    audio_word = models.FileField(upload_to='audio/words/', blank=True)
-    audio_pronunciation = models.FileField(upload_to='audio/pronunciation/', blank=True)
-    audio_example = models.FileField(upload_to='audio/example/', blank=True)
+    audio_word = models.FileField(upload_to='audio/words/', blank=True, null=True)
+    audio_pronunciation = models.FileField(upload_to='audio/pronunciation/', blank=True, null=True)
+    audio_example = models.FileField(upload_to='audio/example/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        
+        # Directories for audio storage
         word_audio_dir = os.path.join(settings.MEDIA_ROOT, 'audio/words')
         pronunciation_audio_dir = os.path.join(settings.MEDIA_ROOT, 'audio/pronunciation')
         example_audio_dir = os.path.join(settings.MEDIA_ROOT, 'audio/example')
@@ -68,25 +67,28 @@ class VocabularyWord(models.Model):
         os.makedirs(pronunciation_audio_dir, exist_ok=True)
         os.makedirs(example_audio_dir, exist_ok=True)
 
-        
+        # Generate audio for the word
         tts_word = gTTS(text=self.word, lang='en')
         audio_word_path = os.path.join(word_audio_dir, f'{self.word}.mp3')
         tts_word.save(audio_word_path)
         self.audio_word.name = f'audio/words/{self.word}.mp3'
 
-        
-        tts_pronunciation = gTTS(text=self.pronunciation, lang='en')
+        # Generate audio for the pronunciation
+        tts_pronunciation = gTTS(text=self.pronunciation_text, lang='en')  # Use pronunciation_text instead
         audio_pronunciation_path = os.path.join(pronunciation_audio_dir, f'{self.word}_pronunciation.mp3')
         tts_pronunciation.save(audio_pronunciation_path)
         self.audio_pronunciation.name = f'audio/pronunciation/{self.word}_pronunciation.mp3'
 
-        
-        tts_example = gTTS(text=self.example_sentence, lang='en')
+        # Generate audio for the example sentence
+        tts_example = gTTS(text=self.example_sentence_text, lang='en')  # Use example_sentence_text instead
         audio_example_path = os.path.join(example_audio_dir, f'{self.word}_example.mp3')
         tts_example.save(audio_example_path)
         self.audio_example.name = f'audio/example/{self.word}_example.mp3'
 
-        super().save(*args, **kwargs)
+        super().save(*args, **kwargs)  # Call the original save method
+
+
+
 
 from django.db import models
 from gtts import gTTS

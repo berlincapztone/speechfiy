@@ -1,0 +1,3 @@
+word,pronunciation,example_sentence,corrected_sentence,image,audio_word,audio_pronunciation,audio_example,audio_corrected_sentence
+apple,ap-ple,"An apple a day keeps the doctor away.","An apple each day keeps the doctor away.","/path/to/image/apple.jpg","/path/to/audio/apple.mp3","/path/to/audio/ap-ple.mp3","/path/to/audio/example_apple.mp3","/path/to/audio/corrected_apple.mp3"
+banana,ba-na-na,"I like bananas.","I enjoy bananas.","/path/to/image/banana.jpg","/path/to/audio/banana.mp3","/path/to/audio/ba-na-na.mp3","/path/to/audio/example_banana.mp3","/path/to/audio/corrected_banana.mp3"
