@@ -8,10 +8,9 @@ then
     apt-get install -y python3 python3-pip
 fi
 
-# Install pip packages
+# Install pip packages from requirements.txt
 pip3 install -r requirements.txt
 
 # Run Django commands
 python3 manage.py collectstatic --noinput
 python3 manage.py migrate  # Optional: Add if you need to run migrations
-# Add any additional commands you need here
