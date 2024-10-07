@@ -13,4 +13,4 @@ pip3 install -r requirements.txt
 
 # Run Django commands
 python3 manage.py collectstatic --noinput
-python3 manage.py migrate  # Optional: Add if you need to run migrations
+python3 manage.py migrate
