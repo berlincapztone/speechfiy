@@ -1,6 +1,6 @@
 {
   "builds": [{
-      "src": "honey/wsgi.py",
+      "src": "myproject/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
