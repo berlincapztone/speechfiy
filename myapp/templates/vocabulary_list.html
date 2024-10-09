@@ -54,29 +54,33 @@ body {
     flex: 1;
 }
 
+/* Card Buttons */
 .card-buttons {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    justify-content: space-between; /* Distribute buttons evenly */
     margin-top: 1rem;
-    
+    padding: 0 0.5rem; /* Add horizontal padding to the button container */
 }
 
 .card-buttons button {
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: background-color 0.3s;
+    flex: 1; /* Allow buttons to grow equally */
+    margin: 0 0.25rem; /* Space between buttons */
+    padding: 0.5rem; /* Adjust padding for a better appearance */
+    font-size: 0.875rem; /* Consistent font size */
+    font-weight: 600; /* Bold text */
+    border-radius: 0.9rem; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background color change */
 }
 
 .bg-purple-500 {
-    background-color: #8b5cf6;
+    background-color: #8b5cf6; /* Purple background */
 }
 
 .bg-purple-500:hover {
-    background-color: #7c3aed;
+    background-color: #7c3aed; /* Darker purple on hover */
 }
+
 
 /* Responsive Design */
 @media (min-width: 768px) {
@@ -143,19 +147,19 @@ footer a:hover {
             <h1 class="text-3xl font-bold mb-6">Vocabulary List</h1>
             <div class="card-wrapper grid gap-6 md:grid-cols-2">
                 {% for vocab in vocabulary_words %}
-                <div class="card-container">
-                    <div class="card-image-container">
+                <div class="card-container bg-white p-4 rounded-lg shadow-lg">
+                    <div class="card-image-container mb-4">
                         {% if vocab.image %}
-                        <img src="{{ vocab.image.url }}" alt="{{ vocab.word }}" class="card-image">
+                        <img src="{{ vocab.image.url }}" alt="{{ vocab.word }}" class="card-image w-full h-32 object-cover rounded-md">
                         {% else %}
-                        <img src="{% static 'images/placeholder.png' %}" alt="Placeholder" class="card-image">
+                        <img src="{% static 'images/placeholder.png' %}" alt="Placeholder" class="card-image w-full h-32 object-cover rounded-md">
                         {% endif %}
                     </div>
                     <div class="card-content">
                         <h3 class="text-lg font-semibold mb-2">{{ vocab.word }}</h3>
                         <p class="text-gray-800 mb-2">{{ vocab.example_sentence }}</p>
                         <p class="text-gray-800 mb-2">{{ vocab.corrected_sentence }}</p>
-                        <div class="card-buttons flex space-x-2 mt-4">
+                        <div class="card-buttons flex gap-2 mt-4 justify-between">
                             {% if vocab.audio_word %}
                             <button onclick="document.getElementById('audio_word_{{ vocab.id }}').play()" class="bg-purple-500 text-white px-4 py-2 rounded-full">Words</button>
                             <audio id="audio_word_{{ vocab.id }}" style="display:none;">
@@ -193,7 +197,8 @@ footer a:hover {
                 {% endfor %}
             </div>
         </section>
-
+        
+        
         <!-- Section 3 -->
         <section id="section3" class="mb-10">
             <h2 class="text-3xl font-bold text-center text-red-500 mb-5">Vocabulary Words</h2>
