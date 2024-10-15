@@ -18,7 +18,7 @@ urlpatterns = [
     path('histroical/', views.historical_view, name='histroical'),  # Corrected 'histroical' to 'historical'
     path('key-research/', views.key_research_view, name='key_research'),
     path('impact/', views.impact_view, name='impact'),
-    path('phonemic-awareness/', views.phonemic_awareness_view, name='phonemic_awarenessss'),  # Corrected 'phonemic awareness' to 'phonemic-awareness'
+    path('phonemic-awareness/', views.phonemic_awareness_view, name='phonemic_awareness'),  # Corrected 'phonemic awareness' to 'phonemic-awareness'
     path('reading/', views.reading_view, name='reading'),
     path('login/', views.login_view, name='login'),
     path('sign/', views.sign_view, name='sign'),
@@ -32,6 +32,4 @@ urlpatterns = [
     path('foods/', foods_list, name='volc7'),
     path('school/', school_list, name='joe'),
     path('vocabulary/', vocabulary_list_view, name='vocabulary_list'),
-   
-
 ]

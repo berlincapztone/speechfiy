@@ -63,7 +63,9 @@ def impact_view(request):
     return render(request, 'impact.html')
 
 def phonemic_awareness_view(request):
-    return render(request, 'phonemic awareness.html')  
+  return render(request, 'phonemic awareness.html')
+
+
 
 def reading_view(request):
     return render(request, 'reading.html')
