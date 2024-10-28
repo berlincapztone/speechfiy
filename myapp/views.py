@@ -125,3 +125,32 @@ def vocabulary_list_view(request):
     return render(request, 'vocabulary_list.html', {'vocabulary_words': vocabulary_words})
 
 
+
+from django.shortcuts import render
+from .models import PhoneticSymbol
+
+
+def phonetic_symbols_view(request):
+    phonetic_symbols = PhoneticSymbol.objects.all()
+    print(phonetic_symbols)  # Print to console for debugging
+    return render(request, 'phonemic_awareness.html', {'phonetic_symbols': phonetic_symbols})
+
+
+
+from django.shortcuts import render
+from .models import PhoneticRepresentation
+
+def phonetic_representations_view(request):
+    phonetic_representations = PhoneticRepresentation.objects.all()
+    return render(request, 'phonetic_representations.html', {'phonetic_representations': phonetic_representations})
+
+
+# myapp/views.py
+
+from django.shortcuts import render
+from .models import SpeechSound
+
+def speech_sound_list(request):
+    speech_sounds = SpeechSound.objects.all()
+    return render(request, 'myapp/speechsound_list.html', {'speech_sounds': speech_sounds})
+

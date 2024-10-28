@@ -9,6 +9,9 @@ from .views import animal_list
 from.views import foods_list
 from.views import school_list
 from .views import vocabulary_list_view
+from .views import phonetic_representations_view
+from .views import speech_sound_list
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -32,4 +35,7 @@ urlpatterns = [
     path('foods/', foods_list, name='volc7'),
     path('school/', school_list, name='joe'),
     path('vocabulary/', vocabulary_list_view, name='vocabulary_list'),
+    path('phonetic-representations/', phonetic_representations_view, name='phonetic_representations'),
+    path('joe/', speech_sound_list, name='speech_sound_list'),
+
 ]

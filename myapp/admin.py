@@ -30,3 +30,28 @@ from .models import VocabularyWord22
 admin.site.register(VocabularyWord22)
 
 
+
+from django.contrib import admin
+from .models import PhoneticSymbol
+
+admin.site.register(PhoneticSymbol)
+
+
+
+from django.contrib import admin
+from .models import PhoneticRepresentation
+
+admin.site.register(PhoneticRepresentation)
+
+
+
+# myapp/admin.py
+
+from django.contrib import admin
+from .models import SpeechSound
+
+class SpeechSoundAdmin(admin.ModelAdmin):
+    list_display = ('phoneme', 'word')
+    search_fields = ('phoneme', 'word')
+
+admin.site.register(SpeechSound, SpeechSoundAdmin)

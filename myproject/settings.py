@@ -13,7 +13,8 @@ SECRET_KEY = 'django-insecure-#6z3*+dyq*ku6=ku8klaisydaug3-*ent#q&@71=zuz1oo$z&b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']  # Add your Vercel domain
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']  # Add your Vercel domain 
+
 
 # Application definition
 
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'phonemes',
 ]
 
 MIDDLEWARE = [
@@ -134,6 +136,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

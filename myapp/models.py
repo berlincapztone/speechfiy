@@ -283,3 +283,102 @@ class VocabularyWord22(models.Model):
 
     def __str__(self):
         return self.word
+
+from django.db import models
+from gtts import gTTS
+import os
+from django.conf import settings
+import re
+
+class PhoneticSymbol(models.Model):
+    phoneme = models.CharField(max_length=10)
+    word = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='phonemes/images/')
+    sound_phoneme = models.FileField(upload_to='phonemes/sounds/', blank=True)
+    sound_word = models.FileField(upload_to='phonemes/sounds/', blank=True)
+
+    def save(self, *args, **kwargs):
+        sound_folder = os.path.join(settings.MEDIA_ROOT, 'phonemes', 'sounds')
+        if not os.path.exists(sound_folder):
+            os.makedirs(sound_folder)
+
+        phoneme_clean = re.sub(r'[<>:"/\\|?*]', '', self.phoneme)
+        word_clean = re.sub(r'[<>:"/\\|?*]', '', self.word)
+
+        phoneme_filename = f"{phoneme_clean}_sound.mp3"
+        word_filename = f"{word_clean}_sound.mp3"
+
+        phoneme_path = os.path.join(sound_folder, phoneme_filename)
+        word_path = os.path.join(sound_folder, word_filename)
+
+        word_tts = gTTS(text=self.word, lang='en', slow=False)
+        word_tts.save(word_path)
+
+        phoneme_tts = gTTS(text=self.word, lang='en', slow=True)
+        phoneme_tts.save(phoneme_path)
+
+        self.sound_phoneme = f'phonemes/sounds/{phoneme_filename}'
+        self.sound_word = f'phonemes/sounds/{word_filename}'
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.word} ({self.phoneme})"
+
+
+
+from django.db import models
+from gtts import gTTS
+import os
+from django.conf import settings
+import re
+
+class PhoneticRepresentation(models.Model):
+    phoneme = models.CharField(max_length=10)
+    word = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='phonemes/images/')
+    sound_phoneme = models.FileField(upload_to='phonemes/sounds/', blank=True)
+    sound_word = models.FileField(upload_to='phonemes/sounds/', blank=True)
+
+    def save(self, *args, **kwargs):
+        sound_folder = os.path.join(settings.MEDIA_ROOT, 'phonemes', 'sounds')
+        if not os.path.exists(sound_folder):
+            os.makedirs(sound_folder)
+
+        phoneme_clean = re.sub(r'[<>:"/\\|?*]', '', self.phoneme)
+        word_clean = re.sub(r'[<>:"/\\|?*]', '', self.word)
+
+        phoneme_filename = f"{phoneme_clean}_sound.mp3"
+        word_filename = f"{word_clean}_sound.mp3"
+
+        phoneme_path = os.path.join(sound_folder, phoneme_filename)
+        word_path = os.path.join(sound_folder, word_filename)
+
+        word_tts = gTTS(text=self.word, lang='en', slow=False)
+        word_tts.save(word_path)
+
+        phoneme_tts = gTTS(text=self.word, lang='en', slow=True)
+        phoneme_tts.save(phoneme_path)
+
+        self.sound_phoneme = f'phonemes/sounds/{phoneme_filename}'
+        self.sound_word = f'phonemes/sounds/{word_filename}'
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.word} ({self.phoneme})"
+
+
+
+# myapp/models.py
+
+from django.db import models
+
+class SpeechSound(models.Model):
+    phoneme = models.CharField(max_length=10)  # Field to store phoneme
+    word = models.CharField(max_length=100)     # Field to store the corresponding word
+    sound_phoneme = models.FileField(upload_to='phonemes/sounds/', blank=True)  # Audio file for phoneme
+    sound_word = models.FileField(upload_to='phonemes/sounds/', blank=True)     # Audio file for word
+
+    def __str__(self):
+        return f"{self.word} ({self.phoneme})"

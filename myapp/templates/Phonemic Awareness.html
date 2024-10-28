@@ -170,116 +170,39 @@
             <p class="font-italic">Pro Tip: The consonants c, q, and x do not have their own unique phonemes. C sounds use either the /k/ or /s/ phonemes. Q sounds would use the phonemes /k//w/, as in walkway, while X sounds appear in words ending in /k//s/, such as ducks.</p>
         </section>
 
-        <section id="consonant-phonemes" class="my-5">
-            <h3>Consonant Phonemes</h3>
-            <div class="row">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/school-bag.png' %}">
-                        <p>/b/<br>bag</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/dog.jpg' %}" >
-                        <p>/d/<br>dog</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/fish.png' %}" >
-                        <p>/f/<br>fish</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/goat.jpeg' %}" >
-                        <p>/g/<br>goat</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/hen.jpeg' %}" >
-                        <p>/h/<br>hen</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/girfee.png' %}" >
-                        <p>/j/<br> giraffe</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/cat.jpeg' %}" >
-                        <p>/k/<br>cat</p>
-                    </div>
-                </div>
-              
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/mug.png' %}" >
-                        <p>/m/<br>mug</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/nest.jpeg' %}" >
-                        <p>/n/<br>nest</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/pig.png' %}" >
-                        <p>/p/<br>pig</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/rat.png' %}" >
-                        <p>/r/<br> rat</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/sun.jpeg' %}" >
-                        <p>/s/<br>sun</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/tap.png' %}" >
-                        <p>/t/<br>tap</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/van.jpeg' %}" >
-                        <p>/v/<br>van</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/woogen.jpeg' %}" >
-                        <p>/w/<br>wagon</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/nool.png' %}" >
-                        <p>/y/<br>yarn</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="text-center">
-                        <img src="{% static 'images/zebra.png' %}" >
-                        <p>/z/<br>zebra</p>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
-
+        <h1>Phonetic Symbols</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phoneme</th>
+                    <th>Word</th>
+                    <th>Image</th>
+                    <th>Play Phoneme</th>
+                    <th>Play Word</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for symbol in phonetic_symbols %}
+                    <tr>
+                        <td>{{ symbol.phoneme }}</td>
+                        <td>{{ symbol.word }}</td>
+                        <td><img src="{{ symbol.image.url }}" alt="{{ symbol.word }}" width="50"></td>
+                        <td>
+                            <audio controls>
+                                <source src="{{ symbol.sound_phoneme.url }}" type="audio/mpeg">
+                            </audio>
+                        </td>
+                        <td>
+                            <audio controls>
+                                <source src="{{ symbol.sound_word.url }}" type="audio/mpeg">
+                            </audio>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+     
         <section id="vowel-phonemes" class="my-5">
             <h3>Vowel Phonemes</h3>
             <div class="row">
@@ -475,9 +398,10 @@
             &copy; 2024 Phonemic Awareness. All Rights Reserved.
         </div>
     </footer>
-
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
