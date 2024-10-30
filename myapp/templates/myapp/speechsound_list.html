@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,47 +7,114 @@
     <title>Speech Sounds</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-6">
-        <h1 class="text-2xl font-bold mb-4">Speech Sounds List</h1>
-        <table class="min-w-full bg-white border border-gray-300">
-            <thead>
-                <tr>
-                    <th class="py-2 border-b">Phoneme</th>
-                    <th class="py-2 border-b">Word</th>
-                    <th class="py-2 border-b">Phoneme Audio</th>
-                    <th class="py-2 border-b">Word Audio</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for sound in speech_sounds %}
-                <tr class="hover:bg-gray-100">
-                    <td class="py-2 border-b">{{ sound.phoneme }}</td>
-                    <td class="py-2 border-b">{{ sound.word }}</td>
-                    <td class="py-2 border-b">
-                        {% if sound.sound_phoneme %}
-                            <audio controls>
-                                <source src="{{ sound.sound_phoneme.url }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        {% else %}
-                            No audio
-                        {% endif %}
-                    </td>
-                    <td class="py-2 border-b">
-                        {% if sound.sound_word %}
-                            <audio controls>
-                                <source src="{{ sound.sound_word.url }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        {% else %}
-                            No audio
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+<body class="bg-gray-100 font-sans">
+
+<header class="bg-blue-400 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-3xl font-semibold">Phonemic Awareness</h1>
+        <nav>
+            <a href="#" class="text-white hover:text-gray-200 mx-3">Link 1</a>
+            <a href="#" class="text-white hover:text-gray-200 mx-3">Link 2</a>
+            <a href="#" class="text-white hover:text-gray-200">Link 3</a>
+        </nav>
     </div>
+</header>
+
+<nav class="bg-white py-3">
+    <div class="container mx-auto">
+        <ul class="flex justify-center space-x-6">
+            <li><a class="text-blue-600 font-semibold hover:text-blue-800" href="#">Consonant Phonemes</a></li>
+            <li><a class="text-blue-600 font-semibold hover:text-blue-800" href="#">Vowel Phonemes</a></li>
+            <li><a class="text-blue-600 font-semibold hover:text-blue-800" href="#">Short Vowel</a></li>
+            <li><a class="text-blue-600 font-semibold hover:text-blue-800" href="#">Long Vowel</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container mx-auto my-8 p-4 bg- rounded-lg">
+    <section>
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Phonemic Awareness Content</h2>
+        <ul class="list-disc list-inside text-blue-600">
+            <li><a href="#phonological-awareness" class="hover:underline">What is phonological awareness?</a></li>
+            <li><a href="#phonemic-awareness" class="hover:underline">What is phonemic awareness?</a></li>
+            <li><a href="#teach-phonemic-awareness" class="hover:underline">How to teach phonemic awareness</a></li>
+        </ul>
+    </section>
+
+    <section id="phonological-awareness" class="mt-8">
+        <h3 class="text-xl font-semibold text-blue-700">What is Phonological Awareness?</h3>
+        <p class="text-gray-700">Phonological awareness is an understanding that words are composed of sound units, including syllables, onsets, and rimes. This foundational skill is essential for reading and literacy as it helps children recognize the structure and patterns of spoken language.</p>
+        <p class="text-gray-700 mt-2">Skills associated with phonological awareness include recognizing rhyming words, clapping out syllables, and identifying the initial or final sounds in words. Building phonological awareness often involves games, songs, and activities that encourage children to listen to and play with the sounds in words.</p>
+    </section>
+
+    <section id="phonemic-awareness" class="mt-8">
+        <h3 class="text-xl font-semibold text-blue-700">What is Phonemic Awareness?</h3>
+        <p class="text-gray-700">Phonemic awareness is the specific ability to focus on and manipulate individual phonemes, or sounds, in spoken words. This skill allows children to recognize that the word "cat" is composed of three distinct sounds: /k/, /a/, and /t/.</p>
+        <p class="text-gray-700 mt-2">Developing phonemic awareness helps children with both decoding (sounding out words) and spelling as they learn the correspondence between sounds and letters. Activities such as blending, segmenting, and manipulating phonemes are commonly used to foster phonemic awareness in early readers.</p>
+    </section>
+
+    <section class="mt-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800">Phoneme Cards</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+            {% for sound in speech_sounds %}
+            <div class="bg-gradient-to-br from-blue-100 via-sky-200 to-blue-300 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
+                <h3 class="text-xl font-semibold text-blue-800 mb-2">{{ sound.phoneme }}</h3>
+                <p class="text-gray-700">{{ sound.word }}</p>
+
+                <div class="mt-4 flex justify-between space-x-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Phoneme Audio:</p>
+                        {% if sound.sound_phoneme %}
+                            <button onclick="document.getElementById('phoneme{{ forloop.counter }}').play()"
+                                    class="bg-blue-500 text-white rounded-lg px-4 py-2 flex items-center hover:bg-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3 10v4h1l2 2V8l-2 2H3zm9-5v14l10-7z"/>
+                                </svg>
+                                Play Phoneme
+                            </button>
+                            <audio id="phoneme{{ forloop.counter }}" src="{{ sound.sound_phoneme.url }}"></audio>
+                        {% else %}
+                            <span class="text-gray-400 italic">No audio</span>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-600">Word Audio:</p>
+                        {% if sound.sound_word %}
+                            <button onclick="document.getElementById('word{{ forloop.counter }}').play()"
+                                    class="bg-blue-500 text-white rounded-lg px-4 py-2 flex items-center hover:bg-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3 10v4h1l2 2V8l-2 2H3zm9-5v14l10-7z"/>
+                                </svg>
+                                Play Word
+                            </button>
+                            <audio id="word{{ forloop.counter }}" src="{{ sound.sound_word.url }}"></audio>
+                        {% else %}
+                            <span class="text-gray-400 italic">No audio</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="teach-phonemic-awareness" class="mt-8">
+        <h3 class="text-xl font-semibold text-blue-700">How to Teach Phonemic Awareness</h3>
+        <ul class="list-disc pl-5 text-gray-700">
+            <li><strong>Sound Matching:</strong> Engage children by asking them to identify words with the same initial sound, such as "bat" and "ball," to build sound recognition.</li>
+            <li><strong>Sound Isolation:</strong> Help children isolate the first, middle, or last sounds in simple words, for example, "What is the first sound in 'dog'?"</li>
+            <li><strong>Sound Blending:</strong> Practice blending sounds to form words, such as saying "c-a-t" and asking the child to blend them to form "cat".</li>
+            <li><strong>Sound Segmentation:</strong> Encourage children to break down words into their individual sounds, for example, "What sounds do you hear in 'sit'?" (s-i-t).</li>
+        </ul>
+    </section>
+</main>
+
+<footer class="bg-blue-400 text-white py-3 mt-5">
+    <div class="container text-center">
+        &copy; 2024 Phonemic Awareness. All Rights Reserved.
+    </div>
+</footer>
+
 </body>
-</html>
+</html> 
